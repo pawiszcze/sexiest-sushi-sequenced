@@ -8,10 +8,6 @@ public class UIManager : MonoBehaviour {
     public Canvas escMenu;
 
     bool isGamePaused = false;
-
-	void Start () {
-		
-	}
 	
 	void Update () {
 
@@ -20,8 +16,11 @@ public class UIManager : MonoBehaviour {
 
             if (isGamePaused)
             {
-                UIPanel activeUIPanel = UIPanel.instance;
-                activeUIPanel.DestroyPanel();
+                if (UIPanel.instance != null)                           
+                {
+                    UIPanel activeUIPanel = UIPanel.instance;
+                    activeUIPanel.DestroyPanel();
+                }
                 if(UIPanel.UILevel == 0)
                 {
                     isGamePaused = false;
