@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
-    //    public static UIManager instance;
+    public static UIManager instance;
 
     ObjectManager ObjectManager;
 
@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour {
 
     private void Awake()
     {
-
+        instance = this;
         SlotSelectMenu = Instantiate(SlotSelectMenuPrefab, transform);
         DifficultySelectMenu = Instantiate(DifficultySelectMenuPrefab, transform);
         SettingsMenu = Instantiate(SettingsMenuPrefab, transform);
@@ -88,31 +88,31 @@ public class UIManager : MonoBehaviour {
     public void MakeSlotSelectMenu()                                                            // Wszystkie te Make____Menu wydają mi się straszliwie nieprofesjonalne, a po dodaniu Object Managera przestały jeszcze działać. Czy jest jakaś forma usprawnienia tego, czy walczyć z tym aż to ruszy?
         // Wiesz, całe to [SerializedField], obsługa tego, te get/set i teraz to sprawiają, że ten manager zaczyna się mocno rozrastać, a jakby nie patrzeć to tylko 5 okienek póki co.
     {
-        Canvas toMake = ObjectManager.UIManager.SlotSelectMenu;
+        Canvas toMake = instance.SlotSelectMenu;
         MakeUI(toMake);
     }
 
     public void MakeDifficultySelectMenu()
     {
-        Canvas toMake = ObjectManager.UIManager.DifficultySelectMenu;
+        Canvas toMake = instance.DifficultySelectMenu;
         MakeUI(toMake);
     }
 
     public void MakeSettingsMenu()
     {
-        Canvas toMake = ObjectManager.UIManager.SettingsMenu;
+        Canvas toMake = instance.SettingsMenu;
         MakeUI(toMake);
     }
 
     public void MakeExtrasMenu()
     {
-        Canvas toMake = ObjectManager.UIManager.ExtrasMenu;
+        Canvas toMake = instance.ExtrasMenu;
         MakeUI(toMake);
     }
 
     public void MakeEscMenu()
     {
-        Canvas toMake = ObjectManager.UIManager.EscMenu;
+        Canvas toMake = instance.EscMenu;
         MakeUI(toMake);
     }
 
@@ -121,14 +121,14 @@ public class UIManager : MonoBehaviour {
         if (toMake.enabled == false)
         {
             toMake.enabled = true;
-            ObjectManager.UIManager.activeUITree.Add(toMake);
+            instance.activeUITree.Add(toMake);
         }
     }
 
     public void RemoveUI(Canvas toRemove)
     {
         toRemove.enabled = false;
-        ObjectManager.UIManager.activeUITree.Remove(toRemove);
+        instance.activeUITree.Remove(toRemove);
     }
 
     public void ChangeDifficultyDescription(int i)
