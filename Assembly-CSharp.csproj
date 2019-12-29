@@ -62,7 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\DifficultyDescriptionBoxScript.cs" />
+    <Compile Include="Assets\Scripts\DifficultyDescriptionBoxScript.cs" />
+    <Compile Include="Assets\Scripts\DifficultyImage.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ObjectManager.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />

@@ -18,11 +18,17 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private Canvas EscMenuPrefab;
 
     private Text difficultyDescriptionText;
+    private Image difficultyImage;
     private Canvas _slotSelectMenu;
     private Canvas _difficultySelectMenu;
     private Canvas _settingsMenu;
     private Canvas _extrasMenu;
     private Canvas _escMenu;
+
+    public Sprite easyBG;
+    public Sprite mediBG;
+    public Sprite hardBG;
+    public Sprite defaultBG;
 
     public Canvas SlotSelectMenu
     {
@@ -151,9 +157,42 @@ public class UIManager : MonoBehaviour {
                     break;
 
                 default:
+                    difficultyDescriptionText.text = "";
                     break;
             }
         }
+
+
+
+        if(DifficultyImage.instance != null)
+        {
+            difficultyImage = DifficultyImage.instance.gameObject.GetComponent<Image>();
+            //Debug.Log(difficultyImage.name);
+            switch (i)
+            {
+                case 0:
+                    difficultyImage.sprite = easyBG;
+                    Debug.Log(difficultyImage.sprite);
+                    break;
+
+                case 1:
+                    difficultyImage.sprite = mediBG;
+                    break;
+
+                case 2:
+                    difficultyImage.sprite = hardBG;
+                    break;
+
+                default:
+                    difficultyImage.sprite = defaultBG;
+                    break;
+            }
+        }
+    }
+
+    public void SelectDifficulty()
+    {
+
     }
 
     public void StartNewGame(int gameSlot)
