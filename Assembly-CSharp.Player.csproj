@@ -61,9 +61,10 @@
     <Compile Include="Assets\Scripts\UIPanel.cs" />
     <Compile Include="Assets\Scripts\DifficultyImage.cs" />
     <Compile Include="Assets\Scripts\UIMainMenu.cs" />
+    <Compile Include="Assets\SelectDifficulty.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\DifficultyDescriptionBoxScript.cs" />
-    <Compile Include="Assets\SelectDifficulty.cs" />
+    <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
