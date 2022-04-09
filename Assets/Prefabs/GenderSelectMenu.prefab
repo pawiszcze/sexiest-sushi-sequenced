@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1.37832, y: 1.37832, z: 1.37832}
   m_Children: []
   m_Father: {fileID: 2545072060308624228}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2741497815762098285
 SpriteRenderer:
@@ -272,7 +272,7 @@ RectTransform:
   - {fileID: 4733590496705328456}
   - {fileID: 3760062109676766653}
   m_Father: {fileID: 2545072060308624228}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1379,11 +1379,11 @@ RectTransform:
   - {fileID: 3507624687833835625}
   - {fileID: 9022321413316775844}
   - {fileID: 3939396091349855505}
-  - {fileID: 9099422441347924109}
   - {fileID: 8856023554943130501}
   - {fileID: 6909019660535872448}
   - {fileID: 3943377365290141528}
   - {fileID: 3602392525971931512}
+  - {fileID: 9099422441347924109}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2044,7 +2044,7 @@ GameObject:
   - component: {fileID: 3731605350047699344}
   - component: {fileID: 4660515064394551282}
   m_Layer: 5
-  m_Name: Select Difficulty Text
+  m_Name: Select Gender Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2062,7 +2062,7 @@ RectTransform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 2545072060308624228}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2110,7 +2110,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SELECT DIFFICULTY
+  m_Text: SELECT GENDER OF BOSSES
 --- !u!1 &4053473362640070533
 GameObject:
   m_ObjectHideFlags: 0
@@ -2719,7 +2719,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2545072060308624228}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3327,7 +3327,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2545072060308624228}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
