@@ -49,6 +49,8 @@ MonoBehaviour:
     type: 3}
   DifficultySelectMenuPrefab: {fileID: 613583444263568214, guid: c4707a07c99f80d408d557faedd15e33,
     type: 3}
+  GenderSelectMenuPrefab: {fileID: 6579092789031533869, guid: 1a5f8f1deb701e849be3e6ef2f8905f7,
+    type: 3}
   SettingsMenuPrefab: {fileID: 223531789953037280, guid: d42f9da83b7c0764aa44fada40bd44ff,
     type: 3}
   ExtrasMenuPrefab: {fileID: 223531789953037280, guid: d42f9da83b7c0764aa44fada40bd44ff,

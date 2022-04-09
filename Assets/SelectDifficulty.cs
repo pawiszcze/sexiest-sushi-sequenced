@@ -7,10 +7,10 @@ public class SelectDifficulty : MonoBehaviour
 {
     private GameObject confirm;
     private GameObject change;
-    public  GameObject other1;
-    public  GameObject other2;
-    public  GameObject separator1;
-    public  GameObject separator2;
+    public GameObject other1;
+    public GameObject other2;
+    public GameObject separator1;
+    public GameObject separator2;
     private Image other1Image;
     private Image other2Image;
     private Button other1Button;
@@ -18,11 +18,9 @@ public class SelectDifficulty : MonoBehaviour
     public Sprite thisSprite;
     private Sprite other1Sprite;
     private Sprite other2Sprite;
-    private bool debugToggle;
 
     void Start()
     {
-        debugToggle = false;
         confirm = this.gameObject.transform.GetChild(0).GetChild(1).gameObject;
         change = this.gameObject.transform.GetChild(0).GetChild(2).gameObject;
         other1Image = other1.GetComponent<Image>();
@@ -54,6 +52,5 @@ public class SelectDifficulty : MonoBehaviour
             other1Image.sprite = thisSprite;
             other2Image.sprite = thisSprite;
         }
-        debugToggle = !debugToggle;
     }
 }

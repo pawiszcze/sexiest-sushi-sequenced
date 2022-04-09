@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour {
 
     [SerializeField] private Canvas SlotSelectMenuPrefab;
     [SerializeField] private Canvas DifficultySelectMenuPrefab;
+    [SerializeField] private Canvas GenderSelectMenuPrefab;
     [SerializeField] private Canvas SettingsMenuPrefab;
     [SerializeField] private Canvas ExtrasMenuPrefab;
     [SerializeField] private Canvas EscMenuPrefab;
@@ -21,6 +22,7 @@ public class UIManager : MonoBehaviour {
     private Image difficultyImage;
     private Canvas _slotSelectMenu;
     private Canvas _difficultySelectMenu;
+    private Canvas _genderSelectMenu;
     private Canvas _settingsMenu;
     private Canvas _extrasMenu;
     private Canvas _escMenu;
@@ -40,6 +42,11 @@ public class UIManager : MonoBehaviour {
     {
         get { return _difficultySelectMenu;  }
         private set { _difficultySelectMenu = value; }
+    }
+    public Canvas GenderSelectMenu
+    {
+        get { return _genderSelectMenu; }
+        private set { _genderSelectMenu = value; }
     }
 
     public Canvas ExtrasMenu
@@ -64,12 +71,14 @@ public class UIManager : MonoBehaviour {
         instance = this;
         SlotSelectMenu = Instantiate(SlotSelectMenuPrefab, transform);
         DifficultySelectMenu = Instantiate(DifficultySelectMenuPrefab, transform);
+        GenderSelectMenu = Instantiate(GenderSelectMenuPrefab, transform);
         SettingsMenu = Instantiate(SettingsMenuPrefab, transform);
-        ExtrasMenu = Instantiate(SettingsMenuPrefab, transform);
+        ExtrasMenu = Instantiate(ExtrasMenuPrefab, transform);
         EscMenu = Instantiate(EscMenuPrefab, transform);
 
         SlotSelectMenu.enabled = false;
         DifficultySelectMenu.enabled = false;
+        GenderSelectMenu.enabled = false;
         SettingsMenu.enabled = false;
         ExtrasMenu.enabled = false;
         EscMenu.enabled = false;
@@ -101,6 +110,11 @@ public class UIManager : MonoBehaviour {
     public void MakeDifficultySelectMenu()
     {
         Canvas toMake = instance.DifficultySelectMenu;
+        MakeUI(toMake);
+    }
+    public void MakeGenderSelectMenu()
+    {
+        Canvas toMake = instance.GenderSelectMenu;
         MakeUI(toMake);
     }
 

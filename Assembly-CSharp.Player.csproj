@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\DifficultyDescriptionBoxScript.cs" />
     <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
+    <Compile Include="Assets\SelectGender.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -393,7 +393,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: START
+  m_Text: SELECT
 --- !u!1 &806932840608175463
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,9 +581,9 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4541801384367585792, guid: cd593424c0f000f42b861524edc1b1a3,
           type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: StartNewGame
-        m_Mode: 3
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: MakeGenderSelectMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -670,7 +670,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: START
+  m_Text: SELECT
 --- !u!1 &1678337892738265188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,9 +1860,9 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4541801384367585792, guid: cd593424c0f000f42b861524edc1b1a3,
           type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: StartNewGame
-        m_Mode: 3
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: MakeGenderSelectMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2058,9 +2058,9 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4541801384367585792, guid: cd593424c0f000f42b861524edc1b1a3,
           type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: StartNewGame
-        m_Mode: 3
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: MakeGenderSelectMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3228,7 +3228,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: START
+  m_Text: SELECT
 --- !u!1 &7642374079920159982
 GameObject:
   m_ObjectHideFlags: 0
