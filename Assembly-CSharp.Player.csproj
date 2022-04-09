@@ -59,13 +59,14 @@
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ObjectManager.cs" />
     <Compile Include="Assets\Scripts\UIPanel.cs" />
+    <Compile Include="Assets\SelectGender.cs" />
     <Compile Include="Assets\Scripts\DifficultyImage.cs" />
+    <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
     <Compile Include="Assets\Scripts\UIMainMenu.cs" />
     <Compile Include="Assets\SelectDifficulty.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\DifficultyDescriptionBoxScript.cs" />
-    <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
-    <Compile Include="Assets\SelectGender.cs" />
+    <Compile Include="Assets\GenderAndPronouns.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

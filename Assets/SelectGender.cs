@@ -9,6 +9,7 @@ public class SelectGender : MonoBehaviour
     private GameObject change;
     public GameObject greyout1;
     public GameObject greyout2;
+    public GameObject pronounsSection;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class SelectGender : MonoBehaviour
     {
         confirm.SetActive(!i);
         change.SetActive(!i);
+        pronounsSection.SetActive(!i);
         greyout1.SetActive(!i);
         greyout2.SetActive(!i);
     }
