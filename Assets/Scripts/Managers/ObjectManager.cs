@@ -8,15 +8,17 @@ public class ObjectManager : MonoBehaviour
 
     public UIManager UIManager;                                            // Czy w skrócie tak ma wyglądać działanie Object Managera?
     public InputManager InputManager;
+    public SaveManager SaveManager;
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
-        } else
+        }
+        else
         {
             Destroy(this);
-        }        
-    }                                               // Null Check - poprawny?
+        }
+    }
 }

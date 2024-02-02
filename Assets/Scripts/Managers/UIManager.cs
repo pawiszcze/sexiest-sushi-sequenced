@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 public class UIManager : MonoBehaviour {
 
     public static UIManager instance;
 
-    ObjectManager ObjectManager;
+    ObjectManager objectManager;
+    SaveManager saveManager;
+    SelectDifficulty selectDifficulty;
 
     List<Canvas> activeUITree = new List<Canvas>();
 
@@ -32,6 +36,15 @@ public class UIManager : MonoBehaviour {
     public Sprite hardBG;
     public Sprite defaultBG;
 
+    public int layerCount;
+    public int internalLayerCount;
+
+    public bool isPlayingAnAnimation;
+
+    string saveFilePath;
+
+    public List<string> saveFileText;
+
     public Canvas SlotSelectMenu
     {
         get { return _slotSelectMenu; }
@@ -43,6 +56,7 @@ public class UIManager : MonoBehaviour {
         get { return _difficultySelectMenu;  }
         private set { _difficultySelectMenu = value; }
     }
+    
     public Canvas GenderSelectMenu
     {
         get { return _genderSelectMenu; }
@@ -68,7 +82,15 @@ public class UIManager : MonoBehaviour {
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
         SlotSelectMenu = Instantiate(SlotSelectMenuPrefab, transform);
         DifficultySelectMenu = Instantiate(DifficultySelectMenuPrefab, transform);
         GenderSelectMenu = Instantiate(GenderSelectMenuPrefab, transform);
@@ -76,34 +98,35 @@ public class UIManager : MonoBehaviour {
         ExtrasMenu = Instantiate(ExtrasMenuPrefab, transform);
         EscMenu = Instantiate(EscMenuPrefab, transform);
 
-        SlotSelectMenu.enabled = false;
-        DifficultySelectMenu.enabled = false;
-        GenderSelectMenu.enabled = false;
-        SettingsMenu.enabled = false;
-        ExtrasMenu.enabled = false;
-        EscMenu.enabled = false;
+        SlotSelectMenu.enabled          = false;
+        DifficultySelectMenu.enabled    = false;
+        GenderSelectMenu.enabled        = false;
+        SettingsMenu.enabled            = false;
+        ExtrasMenu.enabled              = false;
+        EscMenu.enabled                 = false;
     }
 
     private void Start()
     {
-        ObjectManager = ObjectManager.instance;
-        ObjectManager.UIManager = this;
+        saveManager         = SaveManager.instance;
+        selectDifficulty    = SelectDifficulty.instance;
+        objectManager       = ObjectManager.instance;
+        objectManager.UIManager = this;
+        layerCount = 0;
+        internalLayerCount  = 0;
+        isPlayingAnAnimation = false;
     }
 
-    private void OnEnable()
-    {
+    private void OnEnable() { 
         InputManager.EscDown += EscToggle;
     }
 
-    private void OnDisable()
-    {
+    private void OnDisable() {
         InputManager.EscDown -= EscToggle;
     }
 
-    public void MakeSlotSelectMenu()                                                            // Wszystkie te Make____Menu wydają mi się straszliwie nieprofesjonalne, a po dodaniu Object Managera przestały jeszcze działać. Czy jest jakaś forma usprawnienia tego, czy walczyć z tym aż to ruszy?
-        // Wiesz, całe to [SerializedField], obsługa tego, te get/set i teraz to sprawiają, że ten manager zaczyna się mocno rozrastać, a jakby nie patrzeć to tylko 5 okienek póki co.
-    {
-        Canvas toMake = instance.SlotSelectMenu;
+    public void MakeSlotSelectMenu() {                                                        // Wszystkie te Make____Menu wydają mi się straszliwie nieprofesjonalne, a po dodaniu Object Managera przestały jeszcze działać. Czy jest jakaś forma usprawnienia tego, czy walczyć z tym aż to ruszy?
+        Canvas toMake = instance.SlotSelectMenu;                                                                                          // Wiesz, całe to [SerializedField], obsługa tego, te get/set i teraz to sprawiają, że ten manager zaczyna się mocno rozrastać, a jakby nie patrzeć to tylko 5 okienek póki co.
         MakeUI(toMake);
     }
 
@@ -112,20 +135,17 @@ public class UIManager : MonoBehaviour {
         Canvas toMake = instance.DifficultySelectMenu;
         MakeUI(toMake);
     }
-    public void MakeGenderSelectMenu()
-    {
+    public void MakeGenderSelectMenu() { 
         Canvas toMake = instance.GenderSelectMenu;
         MakeUI(toMake);
     }
 
-    public void MakeSettingsMenu()
-    {
+    public void MakeSettingsMenu() { 
         Canvas toMake = instance.SettingsMenu;
         MakeUI(toMake);
     }
 
-    public void MakeExtrasMenu()
-    {
+    public void MakeExtrasMenu() {
         Canvas toMake = instance.ExtrasMenu;
         MakeUI(toMake);
     }
@@ -136,8 +156,7 @@ public class UIManager : MonoBehaviour {
         MakeUI(toMake);
     }
 
-    public void MakeUI(Canvas toMake)
-    {
+    public void MakeUI(Canvas toMake) {
         if (toMake.enabled == false)
         {
             toMake.enabled = true;
@@ -145,8 +164,11 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-    public void RemoveUI(Canvas toRemove)
-    {
+    public void UnMakeUI() {                                                          //unloading UI this way should alllow using the MakeNewUI method without forever stacking canvases
+        
+    }
+
+    public void RemoveUI(Canvas toRemove) {
         toRemove.enabled = false;
         instance.activeUITree.Remove(toRemove);
     }
@@ -181,12 +203,10 @@ public class UIManager : MonoBehaviour {
         if(DifficultyImage.instance != null)
         {
             difficultyImage = DifficultyImage.instance.gameObject.GetComponent<Image>();
-            //Debug.Log(difficultyImage.name);
             switch (i)
             {
                 case 0:
                     difficultyImage.sprite = easyBG;
-                    Debug.Log(difficultyImage.sprite);
                     break;
 
                 case 1:
@@ -204,24 +224,36 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-    public void SelectDifficulty()
-    {
-
-    }
-
     public void StartNewGame(int gameSlot)
     {
-        System.IO.File.WriteAllText("C:/Users/pawel/Desktop/SaveSlot" + gameSlot + ".txt", "Game Started1");
+        Debug.Log(gameSlot);
+        saveManager = SaveManager.instance;
+        saveManager.Save(gameSlot);
     }
 
-    private void EscToggle()
-    {
-            if(activeUITree.Count==0)
+    public void EscToggle() {
+        if (!isPlayingAnAnimation)
+        {
+            if (internalLayerCount == 0)
             {
-                MakeEscMenu();               
-            } else
-            {
-                RemoveUI(activeUITree[activeUITree.Count - 1]);
+                if (activeUITree.Count == 0)
+                {
+                    MakeEscMenu();
+                }
+                else if (layerCount == 0)
+                {
+                    RemoveUI(activeUITree[activeUITree.Count - 1]);
+                }
             }
+            else
+            {
+                internalLayerCount--;
+            }
+        }
     }
+
+   /* public void Update()
+    {
+        Debug.Log("LayerCount " + internalLayerCount);
+    }*/
 }
