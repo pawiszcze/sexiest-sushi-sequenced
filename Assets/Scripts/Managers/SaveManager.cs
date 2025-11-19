@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using System.IO;
+using System;
 
 public class SaveManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class SaveManager : MonoBehaviour
     public string saveFilePath;
     public List<string> saveFileText = new List<string>();
     public int selectedSlot;
+
+    protected FileStream stream = null;
 
     private void Awake()
     {
@@ -74,6 +77,8 @@ public class SaveManager : MonoBehaviour
                     }
                 } while (line != null);
             }
+
+            theReader.Close();
         }
         catch
         {
@@ -81,24 +86,41 @@ public class SaveManager : MonoBehaviour
         }
         return "Bad";
         //return saveFileText[index];
+
     }
 
     public void Save(int slot)
     {
         selectedSlot = slot;
-        //Debug.Log(saveFilePath);
         string fullSavePath = saveFilePath + slot + ".txt";
-        //Debug.Log(fullSavePath);
+
+        stream = new FileStream(fullSavePath, FileMode.OpenOrCreate);
 
         if (File.Exists(fullSavePath))
         {
-            //Debug.Log(saveFileText);
-            File.WriteAllText(fullSavePath, string.Join("", saveFileText));
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(stream, Encoding.ASCII))
+                {
+                    Debug.Log(saveFileText[0]);
+                    Debug.Log(saveFileText[1]);
+                    string textToSave = String.Join("",saveFileText);
+                    writer.Write(textToSave);
+                    writer.Close();
+                }
+            }
+            catch(Exception exp)
+            {
+                Debug.Log("Saving error");
+            }
+            //StreamReader theReader = new StreamReader(saveFilePath + slot + ".txt", Encoding.Default);
+            //File.WriteAllText(fullSavePath, string.Join("", saveFileText));
         }
         else
         {
             File.Create(fullSavePath);
             Save(slot);
         }
+        stream.Close();
     }
 }

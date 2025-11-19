@@ -11,13 +11,19 @@ public class SaveSlotSprite : MonoBehaviour
     [SerializeField] Sprite easyIMG;
     [SerializeField] Sprite mediumIMG;
     [SerializeField] Sprite hardIMG;
+    [SerializeField] GameObject child;
+    [SerializeField] Texture femmeIMG;
+    [SerializeField] Texture bothIMG;
+    [SerializeField] Texture mascIMG;
     [SerializeField] int slot;
 
     int slotDifficulty = 0;
+    int slotGender = 0;
     bool isSaveFile = false;
 
     private string saveFilePath;
-    private Image selfImage;
+    private Image selfDifficultyImage;
+    private RawImage selfGenderRImage;
     
     void Start()
     {
@@ -25,33 +31,53 @@ public class SaveSlotSprite : MonoBehaviour
         saveManager = SaveManager.instance;
         saveFilePath = saveManager.saveFilePath;
 
-        selfImage = gameObject.GetComponent<Image>();
+        selfDifficultyImage = gameObject.GetComponent<Image>();
+        selfGenderRImage = child.GetComponent<RawImage>();
+        
 
         string fullSavePath = saveFilePath + slot + ".txt";
         isSaveFile = System.IO.File.Exists(fullSavePath);
-        //Debug.Log("Selected slot is " + slot);
+        
 
         if (isSaveFile)
         {
             slotDifficulty = int.Parse(saveManager.ReadIndex(slot, 0));
-            switch (slotDifficulty){
+            slotGender = int.Parse(saveManager.ReadIndex(slot, 1));
+            switch (slotDifficulty)
+            {
                 case 1:
-                    selfImage.sprite = easyIMG;
-                    //Debug.Log("Slot " + slot + ", difficulty Easy");
+                    selfDifficultyImage.sprite = easyIMG;
                     break;
                 case 2:
-                    selfImage.sprite = mediumIMG;
-                    //Debug.Log("Slot " + slot + ", difficulty Medium");
+                    selfDifficultyImage.sprite = mediumIMG;
                     break;
                 case 3:
-                    selfImage.sprite = hardIMG;
-                    //Debug.Log("Slot " + slot + ", difficulty Hard");
+                    selfDifficultyImage.sprite = hardIMG;
+                    break;
+                case 0:
+                    Debug.Log("sprite bad");
+                    break;
+
+            }
+
+            selfDifficultyImage.color = Color.white;
+
+
+            switch (slotGender)
+            {
+                case 1:
+                    selfGenderRImage.texture = femmeIMG;
+                    break;
+                case 2:
+                    selfGenderRImage.texture = bothIMG;
+                    break;
+                case 3:
+                    selfGenderRImage.texture = mascIMG;
                     break;
                 case 0:
                     Debug.Log("sprite bad");
                     break;
             }
-            selfImage.color = Color.white;
         }
     }
 
@@ -62,6 +88,7 @@ public class SaveSlotSprite : MonoBehaviour
             Debug.Log("Loading Game Placeholder");
         } else
         {
+            Debug.Log("Creating Save Slot");
             uiManager.MakeDifficultySelectMenu();
             saveManager.Save(slot);
         }

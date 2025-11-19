@@ -11,6 +11,8 @@ public class SelectDifficulty : MonoBehaviour
     [SerializeField] private GameObject genderButtons;
     [SerializeField] private GameObject mediumGroup;
     [SerializeField] private GameObject hardGroup;
+    [SerializeField] private GameObject mediumVignette;
+    [SerializeField] private GameObject hardVignette;
     [SerializeField] private GameObject difficultyButtons;
     [SerializeField] private GameObject descriptionTextBox;
 
@@ -74,7 +76,7 @@ public class SelectDifficulty : MonoBehaviour
         maleFish.SetActive(true);
         descriptionTextBox.SetActive(true);
         startButton.SetActive(true);
-        SetGenderInSlot(1);
+        SetGenderInSlot(3);
         descriptionBoxText.text = "Male fish placeholder";
     }
     
@@ -84,7 +86,7 @@ public class SelectDifficulty : MonoBehaviour
         maleFish.SetActive(false);
         descriptionTextBox.SetActive(true);
         startButton.SetActive(true);
-        SetGenderInSlot(2);
+        SetGenderInSlot(1);
         descriptionBoxText.text = "Female fish placeholder";
     }
 
@@ -94,7 +96,7 @@ public class SelectDifficulty : MonoBehaviour
         maleFish.SetActive(true);
         descriptionTextBox.SetActive(true);
         startButton.SetActive(true);
-        SetGenderInSlot(3);
+        SetGenderInSlot(2);
         descriptionBoxText.text = "Both genders placeholder";
     }
     #endregion
@@ -105,7 +107,9 @@ public class SelectDifficulty : MonoBehaviour
         gameManager.difficulty = 1;
         SetDifficultyInSlot(1);
         mediumGroup.SetActive(false);
+        mediumVignette.SetActive(false);
         hardGroup.SetActive(false);
+        hardVignette.SetActive(false);
         descriptionTextBox.SetActive(true);
         nextButton.SetActive(true);
         descriptionBoxText.text = "Easy difficulty placeholder";
@@ -116,7 +120,9 @@ public class SelectDifficulty : MonoBehaviour
         gameManager.difficulty = 2;
         SetDifficultyInSlot(2);
         mediumGroup.SetActive(true);
+        mediumVignette.SetActive(true);
         hardGroup.SetActive(false);
+        hardVignette.SetActive(false);
         descriptionTextBox.SetActive(true);
         nextButton.SetActive(true);
         descriptionBoxText.text = "Medium difficulty placeholder";
@@ -127,7 +133,9 @@ public class SelectDifficulty : MonoBehaviour
         gameManager.difficulty = 3;
         SetDifficultyInSlot(3);
         mediumGroup.SetActive(false);
+        mediumVignette.SetActive(false);
         hardGroup.SetActive(true);
+        hardVignette.SetActive(true);
         descriptionTextBox.SetActive(true);
         nextButton.SetActive(true);
         descriptionBoxText.text = "Hard difficulty placeholder";

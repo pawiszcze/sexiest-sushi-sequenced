@@ -55,7 +55,7 @@ public class InputManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Jump"))
         {
             if (SpaceDown != null)
             {
