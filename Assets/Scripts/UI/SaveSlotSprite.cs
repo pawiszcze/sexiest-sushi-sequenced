@@ -8,6 +8,9 @@ public class SaveSlotSprite : MonoBehaviour
     SaveManager saveManager;
     UIManager uiManager;
 
+    [SerializeField] GameObject toRefresh;
+
+    [SerializeField] Sprite defaultIMG;
     [SerializeField] Sprite easyIMG;
     [SerializeField] Sprite mediumIMG;
     [SerializeField] Sprite hardIMG;
@@ -15,6 +18,8 @@ public class SaveSlotSprite : MonoBehaviour
     [SerializeField] Texture femmeIMG;
     [SerializeField] Texture bothIMG;
     [SerializeField] Texture mascIMG;
+    [SerializeField] bool shouldRefresh;
+    [SerializeField] GameObject deleteSaveButton;
     [SerializeField] int slot;
 
     int slotDifficulty = 0;
@@ -31,13 +36,20 @@ public class SaveSlotSprite : MonoBehaviour
         saveManager = SaveManager.instance;
         saveFilePath = saveManager.saveFilePath;
 
-        selfDifficultyImage = gameObject.GetComponent<Image>();
-        selfGenderRImage = child.GetComponent<RawImage>();
-        
+        if (shouldRefresh)
+        {
+            Refresh();
+        }
+    }
 
+    public void Refresh()
+    {
         string fullSavePath = saveFilePath + slot + ".txt";
         isSaveFile = System.IO.File.Exists(fullSavePath);
-        
+        Debug.Log("The save file exists? " + isSaveFile);
+
+        selfDifficultyImage = gameObject.GetComponent<Image>();
+        selfGenderRImage = child.GetComponent<RawImage>();
 
         if (isSaveFile)
         {
@@ -45,7 +57,6 @@ public class SaveSlotSprite : MonoBehaviour
             Debug.Log("For slot " + slot + "Read difficulty as: " + slotDifficulty);
             slotGender = int.Parse(saveManager.ReadIndex(slot, 1));
             Debug.Log("For slot " + slot + "Read gender as: " + slotGender);
-            Debug.Log(slotGender);
             switch (slotDifficulty)
             {
                 case 1:
@@ -60,10 +71,11 @@ public class SaveSlotSprite : MonoBehaviour
                 case 0:
                     Debug.Log("sprite bad");
                     break;
-
             }
 
             selfDifficultyImage.color = Color.white;
+            selfGenderRImage.color = Color.white;
+            deleteSaveButton.SetActive(true);
 
             switch (slotGender)
             {
@@ -81,6 +93,16 @@ public class SaveSlotSprite : MonoBehaviour
                     break;
             }
         }
+        else
+        {
+            Debug.Log("Clearing");
+            selfDifficultyImage.sprite = defaultIMG;
+            Debug.Log(defaultIMG);
+            selfGenderRImage.color = Color.clear;
+            Debug.Log(selfGenderRImage.color.a);
+            deleteSaveButton.SetActive(false);
+        }
+        Debug.Log("Refreshed");
     }
 
     public void onClick()
@@ -97,5 +119,11 @@ public class SaveSlotSprite : MonoBehaviour
             saveManager.selectedSlot = slot;
             uiManager.MakeDifficultySelectMenu();
         }
+    }
+
+    public void clearSlot(int i)
+    {
+        saveManager.DeleteSave(i);
+        toRefresh.GetComponent<SaveSlotSprite>().Refresh();
     }
 }

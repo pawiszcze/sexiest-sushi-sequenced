@@ -99,7 +99,6 @@ public class SaveManager : MonoBehaviour
         {
             stream = new FileStream(fullSavePath, FileMode.OpenOrCreate);
 
-           
             try
             {
                 using (StreamWriter writer = new StreamWriter(stream, Encoding.ASCII))
@@ -124,5 +123,15 @@ public class SaveManager : MonoBehaviour
             Save(slot);
         }
         stream.Close();
+    }
+
+    public void DeleteSave(int slot)
+    {
+        string fullSavePath = saveFilePath + slot + ".txt";
+        if (File.Exists(fullSavePath))
+        {
+            System.IO.File.Delete(fullSavePath);
+            Debug.Log("Deleted save slot " + slot);
+        }
     }
 }
