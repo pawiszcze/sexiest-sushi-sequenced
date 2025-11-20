@@ -70,9 +70,9 @@ public class SaveManager : MonoBehaviour
                     line = theReader.ReadLine();
                     if (line != null)
                     {
-                        if (line.Length > 0)
+                        if (line.Length > index)
                         {
-                            return line[0].ToString();
+                            return line[index].ToString();
                         }
                     }
                 } while (line != null);
@@ -92,19 +92,22 @@ public class SaveManager : MonoBehaviour
     public void Save(int slot)
     {
         selectedSlot = slot;
-        string fullSavePath = saveFilePath + slot + ".txt";
 
-        stream = new FileStream(fullSavePath, FileMode.OpenOrCreate);
+        string fullSavePath = saveFilePath + slot + ".txt";
 
         if (File.Exists(fullSavePath))
         {
+            stream = new FileStream(fullSavePath, FileMode.OpenOrCreate);
+
+           
             try
             {
                 using (StreamWriter writer = new StreamWriter(stream, Encoding.ASCII))
                 {
-                    Debug.Log(saveFileText[0]);
-                    Debug.Log(saveFileText[1]);
+
+                    //Debug.Log(String.Join("", saveFileText) + "Slot:" + selectedSlot);
                     string textToSave = String.Join("",saveFileText);
+                    //Debug.Log(textToSave + "Slot:" + selectedSlot);
                     writer.Write(textToSave);
                     writer.Close();
                 }
@@ -113,12 +116,11 @@ public class SaveManager : MonoBehaviour
             {
                 Debug.Log("Saving error");
             }
-            //StreamReader theReader = new StreamReader(saveFilePath + slot + ".txt", Encoding.Default);
-            //File.WriteAllText(fullSavePath, string.Join("", saveFileText));
         }
         else
         {
-            File.Create(fullSavePath);
+            File.Create(fullSavePath).Close();
+            //Debug.Log("Created the file.");
             Save(slot);
         }
         stream.Close();

@@ -69,17 +69,7 @@ public class SelectDifficulty : MonoBehaviour
     }
 
 
-    #region genderMethods
-    public void ShowMale()
-    {
-        femaleFish.SetActive(false);
-        maleFish.SetActive(true);
-        descriptionTextBox.SetActive(true);
-        startButton.SetActive(true);
-        SetGenderInSlot(3);
-        descriptionBoxText.text = "Male fish placeholder";
-    }
-    
+    #region genderMethods  
     public void ShowFemale()
     {
         femaleFish.SetActive(true);
@@ -99,45 +89,55 @@ public class SelectDifficulty : MonoBehaviour
         SetGenderInSlot(2);
         descriptionBoxText.text = "Both genders placeholder";
     }
+
+    public void ShowMale()
+    {
+        femaleFish.SetActive(false);
+        maleFish.SetActive(true);
+        descriptionTextBox.SetActive(true);
+        startButton.SetActive(true);
+        SetGenderInSlot(3);
+        descriptionBoxText.text = "Male fish placeholder";
+    }
     #endregion
 
     #region difficultyMethods
     void Easy()
     {
         gameManager.difficulty = 1;
-        SetDifficultyInSlot(1);
         mediumGroup.SetActive(false);
         mediumVignette.SetActive(false);
         hardGroup.SetActive(false);
         hardVignette.SetActive(false);
         descriptionTextBox.SetActive(true);
         nextButton.SetActive(true);
+        SetDifficultyInSlot(1);
         descriptionBoxText.text = "Easy difficulty placeholder";
     }
 
     void Medium()
     {
         gameManager.difficulty = 2;
-        SetDifficultyInSlot(2);
         mediumGroup.SetActive(true);
         mediumVignette.SetActive(true);
         hardGroup.SetActive(false);
         hardVignette.SetActive(false);
         descriptionTextBox.SetActive(true);
         nextButton.SetActive(true);
+        SetDifficultyInSlot(2);
         descriptionBoxText.text = "Medium difficulty placeholder";
     }
 
     void Hard()
     {
         gameManager.difficulty = 3;
-        SetDifficultyInSlot(3);
         mediumGroup.SetActive(false);
         mediumVignette.SetActive(false);
         hardGroup.SetActive(true);
         hardVignette.SetActive(true);
         descriptionTextBox.SetActive(true);
         nextButton.SetActive(true);
+        SetDifficultyInSlot(3);
         descriptionBoxText.text = "Hard difficulty placeholder";
     }
     #endregion
@@ -170,7 +170,7 @@ public class SelectDifficulty : MonoBehaviour
 
     public void StartGame()                                                                                                 //to edit, possibly remake from scratch afterwards
     {
-        //Debug.Log("Selected Slot is: " + saveManager.selectedSlot);
+        Debug.Log("Selected Slot is: " + saveManager.selectedSlot);
         saveManager.Save(saveManager.selectedSlot);
     }
 

@@ -42,7 +42,10 @@ public class SaveSlotSprite : MonoBehaviour
         if (isSaveFile)
         {
             slotDifficulty = int.Parse(saveManager.ReadIndex(slot, 0));
+            Debug.Log("For slot " + slot + "Read difficulty as: " + slotDifficulty);
             slotGender = int.Parse(saveManager.ReadIndex(slot, 1));
+            Debug.Log("For slot " + slot + "Read gender as: " + slotGender);
+            Debug.Log(slotGender);
             switch (slotDifficulty)
             {
                 case 1:
@@ -61,7 +64,6 @@ public class SaveSlotSprite : MonoBehaviour
             }
 
             selfDifficultyImage.color = Color.white;
-
 
             switch (slotGender)
             {
@@ -85,12 +87,15 @@ public class SaveSlotSprite : MonoBehaviour
     {
         if (isSaveFile)
         {
-            Debug.Log("Loading Game Placeholder");
+            int controlInteger = int.Parse(saveManager.ReadIndex(slot, 0));
+            if (controlInteger != 0)
+            {
+                Debug.Log("Loading Game Placeholder");
+            }            
         } else
         {
-            Debug.Log("Creating Save Slot");
+            saveManager.selectedSlot = slot;
             uiManager.MakeDifficultySelectMenu();
-            saveManager.Save(slot);
         }
     }
 }
