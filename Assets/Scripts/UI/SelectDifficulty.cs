@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class SelectDifficulty : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class SelectDifficulty : MonoBehaviour
     [SerializeField] private GameObject hardVignette;
     [SerializeField] private GameObject difficultyButtons;
     [SerializeField] private GameObject descriptionTextBox;
-
+    [SerializeField] private VideoClip video;
     [SerializeField] private GameObject nextButton;
     [SerializeField] private GameObject startButton;
 
@@ -28,6 +29,7 @@ public class SelectDifficulty : MonoBehaviour
     UIManager uiManager;
     GameManager gameManager;
     SaveManager saveManager;
+    AnimationManager animationManager;
 
     private int layerCount;
     private string text;
@@ -49,6 +51,7 @@ public class SelectDifficulty : MonoBehaviour
         gameManager = GameManager.instance;
         uiManager = UIManager.instance;
         saveManager = SaveManager.instance;
+        animationManager = AnimationManager.instance;
         ShowDifficulty();
         layerCount = 0;
         text = descriptionBoxText.text;
@@ -206,5 +209,12 @@ public class SelectDifficulty : MonoBehaviour
                 Hard();
                 break;
         }
+    }
+
+    public void PlayVideo(VideoClip videoClip)
+    {
+        GameObject mainCanvas = GameObject.Find("MainMenuCanvas");
+        mainCanvas.SetActive(false);
+        animationManager.PlayVideo(videoClip);
     }
 }

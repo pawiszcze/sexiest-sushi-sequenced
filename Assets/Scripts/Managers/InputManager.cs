@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    public static InputManager instance;
+
+
     public delegate void InputGiven();
     public static event InputGiven EscDown;
     public static event InputGiven KeyWDown;
@@ -20,6 +23,19 @@ public class InputManager : MonoBehaviour
     public static event InputGiven KeyDUp;
     public static event InputGiven SpaceUp;
     //public static event InputGiven EitherMouseButtonDown;                   // Czy w przypadku dużej ilości inputów ten manager nie będzie zbyt bulky? Z nullcheckiem dla każdego eventu z osobna?
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
+    }
 
     void Update()
     {

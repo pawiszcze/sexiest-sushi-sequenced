@@ -252,6 +252,16 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    public void HideAllUILayers()
+    {
+        Debug.Log("UI depth is: "+ activeUITree.Count);
+        int uiDepth = activeUITree.Count;
+        for(int i = uiDepth; i > 0; i--)
+        {
+            RemoveUI(activeUITree[0]);
+        }
+    }
+
    /* public void Update()
     {
         Debug.Log("LayerCount " + internalLayerCount);

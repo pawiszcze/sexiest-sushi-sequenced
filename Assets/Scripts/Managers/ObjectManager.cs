@@ -9,6 +9,7 @@ public class ObjectManager : MonoBehaviour
     public UIManager UIManager;                                            // Czy w skrócie tak ma wyglądać działanie Object Managera?
     public InputManager InputManager;
     public SaveManager SaveManager;
+    public AnimationManager AnimationManager;
 
     private void Awake()
     {
