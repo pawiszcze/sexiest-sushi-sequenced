@@ -85,6 +85,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\Tarodev 2D Controller\_Scripts\PlayerAnimator.cs" />
+    <Compile Include="Assets\Scripts\Managers\SceneManager.cs" />
     <Compile Include="Assets\Scripts\UI\SelectGender.cs" />
     <Compile Include="Assets\Scripts\PlayerFlip.cs" />
     <Compile Include="Assets\Tarodev 2D Controller\_Scripts\PlayerController.cs" />

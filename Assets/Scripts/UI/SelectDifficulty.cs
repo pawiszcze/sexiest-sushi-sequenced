@@ -213,8 +213,6 @@ public class SelectDifficulty : MonoBehaviour
 
     public void PlayVideo(VideoClip videoClip)
     {
-        GameObject mainCanvas = GameObject.Find("MainMenuCanvas");
-        mainCanvas.SetActive(false);
         animationManager.PlayVideo(videoClip);
     }
 }

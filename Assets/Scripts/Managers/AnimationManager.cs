@@ -48,12 +48,16 @@ public class AnimationManager : MonoBehaviour
     public void PlayVideo(VideoClip videoClip)
     {
         vplayer.clip = videoClip;
-        uiManager.HideAllUILayers();
+        GameObject.Find("MainMenuCanvas").SetActive(false);
+        uiManager.RemoveAllUILayers();
         audioManager.GetComponent<AudioSource>().Stop();
         vplayer.Play();
     }
-    /*public void EndReached(VideoPlayer vp)
+    
+    public void SkipVideoOnClick()
     {
+        vplayer.Stop();
         
-    }*/
+    }
+
 }

@@ -168,6 +168,16 @@ public class UIManager : MonoBehaviour {
         
     }
 
+/*    public void HideUI(Canvas toHide)
+    {
+        toHide.enabled = false;
+    }
+
+    public void unHideUI(Canvas toUnhide)
+    {
+        toUnhide.enabled = true;
+    }*/
+
     public void RemoveUI(Canvas toRemove) {
         toRemove.enabled = false;
         instance.activeUITree.Remove(toRemove);
@@ -252,7 +262,7 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-    public void HideAllUILayers()
+    public void RemoveAllUILayers()
     {
         Debug.Log("UI depth is: "+ activeUITree.Count);
         int uiDepth = activeUITree.Count;

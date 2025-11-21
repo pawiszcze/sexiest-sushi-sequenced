@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1783430170}
   - component: {fileID: 1783430171}
   - component: {fileID: 1770195906764523487}
+  - component: {fileID: 4659034107280535346}
   - component: {fileID: 2150734570519541123}
   m_Layer: 0
   m_Name: UIManager
@@ -111,6 +112,22 @@ MonoBehaviour:
   CT001_Intro: []
   VD001_Intro: {fileID: 0}
   vplayer: {fileID: 0}
+--- !u!114 &4659034107280535346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4541801384367585795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db75092965fa3cc4ca0c8e03e9381ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu:
+    m_Handle: 0
+  playground:
+    m_Handle: 0
 --- !u!328 &2150734570519541123
 VideoPlayer:
   m_ObjectHideFlags: 0
