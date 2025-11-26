@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
 
 
     public delegate void InputGiven();
+
     public static event InputGiven EscDown;
     public static event InputGiven KeyWDown;
     public static event InputGiven KeyADown;
@@ -22,7 +23,7 @@ public class InputManager : MonoBehaviour
     public static event InputGiven KeyAUp;
     public static event InputGiven KeyDUp;
     public static event InputGiven SpaceUp;
-    //public static event InputGiven EitherMouseButtonDown;                   // Czy w przypadku dużej ilości inputów ten manager nie będzie zbyt bulky? Z nullcheckiem dla każdego eventu z osobna?
+    public static event InputGiven LeftMouseButtonDown;                   // Czy w przypadku dużej ilości inputów ten manager nie będzie zbyt bulky? Z nullcheckiem dla każdego eventu z osobna?
 
     private void Awake()
     {
@@ -103,12 +104,12 @@ public class InputManager : MonoBehaviour
             }
         }
 
-        /*if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+        if (Input.GetMouseButton(0))
         {
-            if (EitherMouseButtonDown != null)
+            if (LeftMouseButtonDown != null)
             {
-                EitherMouseButtonDown.Invoke();
+                LeftMouseButtonDown();
             }
-        }*/
+        }
     }
 }

@@ -9,11 +9,15 @@ public class AnimationManager : MonoBehaviour
     InputManager inputManager;
     UIManager uiManager;
     AudioManager audioManager;
+    GameManager gameManager;
 
     [SerializeField] Sprite[] CT001_Intro;
     [SerializeField] VideoClip VD001_Intro;
-
+    
     [SerializeField] VideoPlayer vplayer;
+
+    GameObject activeCamera;
+    GameObject UICanvas;
 
     private void Awake()
     {
@@ -33,9 +37,11 @@ public class AnimationManager : MonoBehaviour
         inputManager = InputManager.instance;
         uiManager = UIManager.instance;
         audioManager = AudioManager.instance;
+        gameManager = GameManager.instance;
 
-        GameObject camera = GameObject.Find("Main Camera");
-        vplayer = camera.AddComponent<VideoPlayer>();
+        activeCamera = GameObject.Find("Main Camera");
+        UICanvas = GameObject.Find("MainMenuCanvas");
+        vplayer = activeCamera.AddComponent<VideoPlayer>();
         vplayer.renderMode = VideoRenderMode.CameraNearPlane;
         vplayer.playOnAwake = false;
     }
@@ -48,16 +54,19 @@ public class AnimationManager : MonoBehaviour
     public void PlayVideo(VideoClip videoClip)
     {
         vplayer.clip = videoClip;
-        GameObject.Find("MainMenuCanvas").SetActive(false);
+        UICanvas.SetActive(false);
         uiManager.RemoveAllUILayers();
         audioManager.GetComponent<AudioSource>().Stop();
         vplayer.Play();
+
+        InputManager.LeftMouseButtonDown += SkipVideoOnClick;
     }
     
     public void SkipVideoOnClick()
     {
         vplayer.Stop();
-        
+
+        InputManager.LeftMouseButtonDown -= SkipVideoOnClick;
     }
 
 }
