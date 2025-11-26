@@ -693,10 +693,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4659034107280535346, guid: cd593424c0f000f42b861524edc1b1a3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4541801384367585795, guid: cd593424c0f000f42b861524edc1b1a3,
+        type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1428965368}
     - targetCorrespondingSourceObject: {fileID: 4541801384367585795, guid: cd593424c0f000f42b861524edc1b1a3,
         type: 3}
       insertIndex: -1
@@ -1499,6 +1504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 0
   gender: 0
+  gameState: 0
 --- !u!114 &1428965362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1514,6 +1520,18 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!114 &1428965368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428965353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdddb7a1db40464489bf2b40b0da098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1520289938
 GameObject:
   m_ObjectHideFlags: 0

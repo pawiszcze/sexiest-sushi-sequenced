@@ -10,6 +10,7 @@ public class AnimationManager : MonoBehaviour
     UIManager uiManager;
     AudioManager audioManager;
     GameManager gameManager;
+    SceneSwitchManager sceneSwitchManager;
 
     [SerializeField] Sprite[] CT001_Intro;
     [SerializeField] VideoClip VD001_Intro;
@@ -38,6 +39,7 @@ public class AnimationManager : MonoBehaviour
         uiManager = UIManager.instance;
         audioManager = AudioManager.instance;
         gameManager = GameManager.instance;
+        sceneSwitchManager = SceneSwitchManager.instance;
 
         activeCamera = GameObject.Find("Main Camera");
         UICanvas = GameObject.Find("MainMenuCanvas");
@@ -65,7 +67,7 @@ public class AnimationManager : MonoBehaviour
     public void SkipVideoOnClick()
     {
         vplayer.Stop();
-
+        sceneSwitchManager.SwitchScenes("Sandbox");
         InputManager.LeftMouseButtonDown -= SkipVideoOnClick;
     }
 

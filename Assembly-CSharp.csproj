@@ -85,7 +85,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\Tarodev 2D Controller\_Scripts\PlayerAnimator.cs" />
-    <Compile Include="Assets\Scripts\Managers\SceneManager.cs" />
     <Compile Include="Assets\Scripts\UI\SelectGender.cs" />
     <Compile Include="Assets\Scripts\PlayerFlip.cs" />
     <Compile Include="Assets\Tarodev 2D Controller\_Scripts\PlayerController.cs" />
@@ -107,6 +106,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\UI\GenderSelect.cs" />
     <Compile Include="Assets\Scripts\Flip.cs" />
+    <Compile Include="Assets\Scripts\Managers\SceneSwitchManager.cs" />
     <Compile Include="Assets\Scripts\UI\FadeInTest.cs" />
     <Compile Include="Assets\Scripts\UI\UIPanel.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
